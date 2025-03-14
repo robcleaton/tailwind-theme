@@ -10,7 +10,6 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 // Using HashRouter for GitHub Pages compatibility
-// HashRouter works with the URL hash which doesn't require server URL rewrites
 console.log('Router initialized with HashRouter for GitHub Pages compatibility');
 
 const App = () => (
@@ -21,7 +20,6 @@ const App = () => (
       <HashRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </HashRouter>

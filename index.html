@@ -4,15 +4,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>tailwind-theme-weaver</title>
-    <meta name="description" content="Lovable Generated Project" />
+    <title>Tailwind Theme Weaver</title>
+    <meta name="description" content="Tailwind CSS Component Showcase" />
     <meta name="author" content="Lovable" />
     <meta property="og:image" content="og-image.png" />
-    <!-- Handle SPA redirects for GitHub Pages -->
+    <!-- Base path will be injected by Vite based on configuration -->
+    <script>
+      console.log('Document location:', window.location.href);
+    </script>
+    <!-- SPA Redirect for GitHub Pages -->
     <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
       (function(l) {
         if (l.search[1] === '/' ) {
           var decoded = l.search.slice(1).split('&').map(function(s) { 
@@ -24,25 +25,10 @@
         }
       }(window.location))
     </script>
-    <!-- Add base tag with explicit path for GitHub Pages -->
-    <script>
-      // Dynamically set the base URL based on the environment
-      (function() {
-        var baseUrl = '/';
-        // Check if we're on GitHub Pages (contains repository name in path)
-        if (window.location.hostname.indexOf('github.io') !== -1) {
-          baseUrl = '/tailwind-theme/';
-        }
-        document.write('<base href="' + baseUrl + '" />');
-        console.log('Set base URL to:', baseUrl);
-      })();
-    </script>
   </head>
 
   <body>
     <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="./src/main.tsx"></script>
   </body>
 </html>
