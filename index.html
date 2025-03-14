@@ -8,9 +8,10 @@
     <meta name="description" content="Tailwind CSS Component Showcase" />
     <meta name="author" content="Lovable" />
     <meta property="og:image" content="og-image.png" />
-    <!-- Base path will be injected by Vite based on configuration -->
+    <!-- Debug info -->
     <script>
-      console.log('Document location:', window.location.href);
+      console.log('Document loading at:', window.location.href);
+      console.log('Base URL:', document.baseURI);
     </script>
     <!-- SPA Redirect for GitHub Pages -->
     <script type="text/javascript">
@@ -29,6 +30,6 @@
 
   <body>
     <div id="root"></div>
-    <script type="module" src="./src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

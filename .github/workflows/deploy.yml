@@ -34,9 +34,13 @@ jobs:
           git config --global user.name "GitHub Actions"
 
       - name: Build
-        run: npm run build
+        run: |
+          npm run build
+          # Create a .nojekyll file to prevent GitHub Pages from ignoring files that begin with an underscore
+          touch dist/.nojekyll
         env:
           NODE_ENV: production
+          # Explicitly set the BASE_URL to match your repository name
           BASE_URL: /tailwind-theme/
 
       - name: Debug Build Output

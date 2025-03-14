@@ -7,11 +7,8 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   // Always force GitHub Pages base path for production builds
-  // This ensures consistency when deploying to GitHub Pages
-  const isGitHubPages = true; // Always use GitHub Pages paths in production
-  
-  // This must match your GitHub repository name exactly
-  const base = '/tailwind-theme/';
+  const repoName = 'tailwind-theme';
+  const base = mode === 'production' ? `/${repoName}/` : '/';
   
   console.log('Building with base path:', base, 'Mode:', mode);
   
@@ -24,6 +21,8 @@ export default defineConfig(({ mode }) => {
     build: {
       cssCodeSplit: false, // Generate a single CSS file to avoid issues
       assetsInlineLimit: 0, // Don't inline any assets as base64
+      outDir: 'dist',
+      sourcemap: true, // Enable sourcemaps for debugging
     },
     plugins: [
       react(),
