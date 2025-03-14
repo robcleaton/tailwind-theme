@@ -12,8 +12,15 @@ console.log('Document base URI:', document.baseURI);
 
 // Log any potential issues with asset loading
 window.addEventListener('error', function(e) {
-  if (e.target && (e.target.tagName === 'LINK' || e.target.tagName === 'SCRIPT' || e.target.tagName === 'IMG')) {
-    console.error('Resource loading error:', e.target.src || e.target.href);
+  // Type check and cast the target to HTMLElement
+  const target = e.target;
+  if (target instanceof HTMLElement) {
+    if (target.tagName === 'LINK' || target.tagName === 'SCRIPT' || target.tagName === 'IMG') {
+      console.error('Resource loading error:', 
+        (target as HTMLImageElement | HTMLScriptElement).src || 
+        (target as HTMLLinkElement).href
+      );
+    }
   }
 }, true);
 
