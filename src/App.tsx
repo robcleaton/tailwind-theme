@@ -9,8 +9,12 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-// Get the base URL from the environment or default to the repository name for GitHub Pages
-const basename = import.meta.env.BASE_URL || "/tailwind-theme/";
+// For custom domain, we want an empty base path
+// For GitHub Pages, we need the repository name as the base path
+const isCustomDomain = window.location.hostname === 'tailwind-theme.lovable.app';
+const basename = isCustomDomain ? '/' : (import.meta.env.BASE_URL || "/tailwind-theme/");
+
+console.log('Using basename:', basename);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

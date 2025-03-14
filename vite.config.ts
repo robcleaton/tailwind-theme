@@ -10,7 +10,8 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  base: "/tailwind-theme/", // Base path for GitHub Pages
+  // Dynamically set the base path - empty for custom domains, /tailwind-theme/ for GitHub Pages
+  base: process.env.VITE_CUSTOM_DOMAIN ? '/' : "/tailwind-theme/",
   plugins: [
     react(),
     mode === 'development' &&
