@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  base: "/tailwind-theme/", // Add the base path for GitHub Pages
+  base: "/tailwind-theme/", // Base path for GitHub Pages
   plugins: [
     react(),
     mode === 'development' &&

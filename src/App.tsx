@@ -10,7 +10,7 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 // Get the base URL from the environment or default to the repository name for GitHub Pages
-const basename = import.meta.env.BASE_URL;
+const basename = import.meta.env.BASE_URL || "/tailwind-theme/";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
