@@ -9,7 +9,8 @@ export default defineConfig(({ mode }) => {
   // Check if we're building for GitHub Pages
   const isGitHubPages = process.env.GITHUB_PAGES === 'true';
   
-  // Set repository name explicitly for GitHub Pages - this must match the repository name exactly
+  // Always use the repository name as the base path for GitHub Pages
+  // This must match your GitHub repository name exactly
   const base = isGitHubPages ? '/tailwind-theme/' : '/';
   
   console.log('Building with base path:', base, 'Mode:', mode, 'GitHub Pages:', isGitHubPages);

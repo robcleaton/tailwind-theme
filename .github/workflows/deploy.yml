@@ -28,7 +28,10 @@ jobs:
           GITHUB_PAGES: true # This is crucial for setting the correct base path
 
       - name: Debug build output
-        run: ls -la dist/
+        run: |
+          ls -la dist/
+          cat dist/index.html | head -20
+          echo "BASE_PATH from env: $GITHUB_PAGES"
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
