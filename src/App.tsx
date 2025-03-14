@@ -11,10 +11,13 @@ const queryClient = new QueryClient();
 
 // For custom domain, we want an empty base path
 // For GitHub Pages, we need the repository name as the base path
-const isCustomDomain = window.location.hostname === 'tailwind-theme.lovable.app';
+const hostname = window.location.hostname;
+const isCustomDomain = hostname === 'tailwind-theme.lovable.app' || 
+                       hostname.includes('preview--tailwind-theme.lovable.app') ||
+                       hostname.endsWith('.lovable.app');
 const basename = isCustomDomain ? '/' : (import.meta.env.BASE_URL || "/tailwind-theme/");
 
-console.log('Using basename:', basename);
+console.log('Using basename:', basename, 'for hostname:', hostname);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
