@@ -6,8 +6,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  // Check if we're building for GitHub Pages
-  const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+  // Force GitHub Pages base path for production builds
+  const isGitHubPages = process.env.GITHUB_PAGES === 'true' || mode === 'production';
   
   // Always use the repository name as the base path for GitHub Pages
   // This must match your GitHub repository name exactly

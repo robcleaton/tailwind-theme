@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -22,19 +24,30 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Output Environment Info
+        run: |
+          echo "Node version: $(node -v)"
+          echo "NPM version: $(npm -v)"
+          echo "Current directory: $(pwd)"
+          echo "Repository: ${{ github.repository }}"
+
       - name: Build
         run: npm run build
         env:
-          GITHUB_PAGES: true # This is crucial for setting the correct base path
+          GITHUB_PAGES: true # Force GitHub Pages mode
+          BASE_URL: /tailwind-theme/ # Explicitly set base URL
 
       - name: Debug build output
         run: |
           ls -la dist/
-          cat dist/index.html | head -20
+          cat dist/index.html | head -40
           echo "BASE_PATH from env: $GITHUB_PAGES"
+          echo "Assets in dist:"
+          find dist -type f | sort
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           branch: gh-pages
+          clean: true # Automatically remove deleted files from the deploy branch

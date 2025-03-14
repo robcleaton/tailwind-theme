@@ -25,7 +25,18 @@
       }(window.location))
     </script>
     <!-- Add base tag with explicit path for GitHub Pages -->
-    <base href="%BASE_URL%" />
+    <script>
+      // Dynamically set the base URL based on the environment
+      (function() {
+        var baseUrl = '/';
+        // Check if we're on GitHub Pages (contains repository name in path)
+        if (window.location.hostname.indexOf('github.io') !== -1) {
+          baseUrl = '/tailwind-theme/';
+        }
+        document.write('<base href="' + baseUrl + '" />');
+        console.log('Set base URL to:', baseUrl);
+      })();
+    </script>
   </head>
 
   <body>
