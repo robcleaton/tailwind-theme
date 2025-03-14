@@ -9,11 +9,11 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # This is critical for deployment to GitHub Pages
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          persist-credentials: false
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -30,6 +30,8 @@ jobs:
           echo "NPM version: $(npm -v)"
           echo "Repository: ${{ github.repository }}"
           echo "BASE_URL will be: /tailwind-theme/"
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
 
       - name: Build
         run: npm run build
@@ -54,3 +56,4 @@ jobs:
           folder: dist
           branch: gh-pages
           clean: true
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use the auto-generated token
