@@ -9,9 +9,9 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-// Using HashRouter for all environments to ensure consistent routing
-// This is especially important for GitHub Pages which doesn't support client-side routing out of the box
-console.log('Using HashRouter for routing to ensure compatibility with GitHub Pages');
+// Using HashRouter for GitHub Pages compatibility
+// HashRouter works with the URL hash which doesn't require server URL rewrites
+console.log('Router initialized with HashRouter for GitHub Pages compatibility');
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
