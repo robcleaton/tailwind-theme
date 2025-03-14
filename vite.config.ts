@@ -6,17 +6,11 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  // Check if we're building for GitHub Pages
-  const isGitHubPages = !process.env.VITE_CUSTOM_DOMAIN && 
-                       !process.env.VITE_PREVIEW_DOMAIN && 
-                       process.env.NODE_ENV !== 'development';
+  // Always use root path for all environments
+  // This is crucial for assets to load correctly
+  const base = '/';
   
-  const base = isGitHubPages ? '/tailwind-theme/' : '/';
-  
-  console.log('Building with base path:', base, 'for env:', 
-    process.env.NODE_ENV, 
-    'Custom domain:', !!process.env.VITE_CUSTOM_DOMAIN,
-    'Preview domain:', !!process.env.VITE_PREVIEW_DOMAIN);
+  console.log('Building with base path:', base, 'Mode:', mode);
   
   return {
     server: {
