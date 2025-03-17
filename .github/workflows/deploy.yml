@@ -38,6 +38,8 @@ jobs:
           npm run build
           # Create a .nojekyll file to prevent GitHub Pages from ignoring files that begin with an underscore
           touch dist/.nojekyll
+          # Create a debug file to verify deployment
+          echo "Deployment successful. Built on: $(date)" > dist/deployment-info.txt
         env:
           NODE_ENV: production
           # Explicitly set the BASE_URL to match your repository name

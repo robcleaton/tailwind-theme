@@ -11,6 +11,8 @@ const queryClient = new QueryClient();
 
 // Using HashRouter for GitHub Pages compatibility
 console.log('Router initialized with HashRouter for GitHub Pages compatibility');
+console.log('Base path:', import.meta.env.BASE_URL);
+console.log('Current URL:', window.location.href);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
